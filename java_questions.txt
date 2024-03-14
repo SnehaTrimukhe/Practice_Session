@@ -1,0 +1,727 @@
+1) print all prime numbers
+
+A prime number is a whole number greater than 1 that can only be divided evenly by 1 and itself, with no remainder.
+
+// Importing the Scanner class from the java.util package to take user input
+import java.util.*;
+
+// Creating a class named PrimeNumbers
+public class PrimeNumbers {
+
+    // Main method where the execution of the program begins
+    public static void main(String[] args) {
+        
+        // Creating a Scanner object to take user input from the console
+        Scanner scan = new Scanner(System.in);
+        
+        // Prompting the user to enter the range to print the prime numbers
+        System.out.println("Enter the range to print the prime numbers");
+        
+        // Reading the user input for the range
+        int n = scan.nextInt();
+        
+        // Looping from 3 to the specified range 'n'
+        for (int i = 3; i <= n; i++) {
+            
+            // Calling the checkprime() method to determine if 'i' is prime
+            int res = checkprime(i);
+            
+            // Checking if 'res' is not equal to 0 (indicating 'i' is prime)
+            if (res != 0) {
+                
+                // Printing the prime number
+                System.out.println(res);
+            }
+        }
+    }
+
+    // Method to check if a number is prime
+    public static int checkprime(int n) {
+        
+        // Looping from 2 to 'n-1' to check if 'n' is divisible by any number
+        for (int i = 2; i < n; i++) {
+            
+            // Checking if 'n' is divisible by 'i' (not prime)
+            if (n % i == 0) {
+                
+                // Returning 0 indicating 'n' is not prime
+                return 0;
+            }
+        }
+        
+        // Returning 'n' indicating 'n' is prime
+        return n;
+    }
+}
+
+2)Find the GCD of two numbers using Euclidian algorithm
+
+The Greatest Common Divisor (GCD) of two numbers is the largest positive integer that divides both numbers without leaving a remainder. In simpler terms, it's the largest number that divides both numbers evenly.
+
+import java.util.*;
+
+// Main class for GCD application
+public class GcdApp {
+    public static void main(String[] args) {
+        // Creating a Scanner object to take user input
+        Scanner scan = new Scanner(System.in);
+        
+        // Prompting the user to enter two numbers
+        System.out.println("Enter two numbers");
+        
+        // Reading the user input for two numbers
+        int m = scan.nextInt();
+        int n = scan.nextInt();
+        
+        // Creating an instance of FindGcd class
+        Gcd gcd = new Gcd();
+        
+        // Calling the findGcd method to compute GCD
+        int res = gcd.findGcd(m, n);
+        
+        // Printing the result (GCD)
+        System.out.println(res);
+    }
+}
+
+// Class to find GCD
+public class Gcd {
+    // Method to find GCD using Euclidean algorithm
+    int findGcd(int m, int n) {
+        // Iterative loop to compute GCD
+        while (n != 0) {
+            // Finding remainder
+            int rem = m % n;
+            
+            // Updating m and n
+            m = n;
+            n = rem;
+        }
+        // GCD is stored in 'm'
+        int gcd = m;
+        
+        // Returning the GCD
+        return gcd;
+    }
+}
+
+3) Claculate the sum of series
+
+In mathematics, the sum of series refers to the total result obtained by adding up all the terms of a sequence or series. 
+
+import java.util.*;
+
+// Main class for calculating the sum of series
+public class Main {
+    public static void main(String[] args) {
+        // Creating a Scanner object to take user input
+        Scanner scan = new Scanner(System.in);
+        
+        // Prompting the user to enter a number
+        System.out.println("Enter a number:");
+        
+        // Reading the user input for the number
+        int n = scan.nextInt();
+        
+        // Calling the calculateSeries method to compute the sum of the series
+        calculateSeries(n);
+    }
+    
+    // Method to calculate the sum of the series
+    public static void calculateSeries(int n) {
+        // Initializing the sum to 0
+        double sum = 0;
+        
+        // Looping through the series from 1 to 'n'
+        for (int i = 1; i <= n; i++) {
+            // Adding the reciprocal of 'i' to the sum
+            sum = sum + (1.0 / i);
+        }
+        
+        // Printing the computed sum of the series
+        System.out.println(sum);
+    }
+}
+
+4)write a program to print the 1st n numbers of Fibonacci series
+
+The Fibonacci series is a sequence of numbers where each number (Fibonacci number) is the sum of the two preceding ones, typically starting with 0 and 1. So, the sequence goes 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, and so forth.
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter a number");
+        int n = scan.nextInt();
+        int fib1 = 0;
+        int fib2 = 1;
+        if (n == 1) {
+            System.out.println(fib1);
+        } else if (n == 2) {
+            System.out.println(fib1 + " " + fib2);
+        } else {
+            System.out.print(fib1 + " " + fib2 + " ");
+            for (int i = 3; i <= n; i++) {
+                int nextNo = fib1 + fib2;
+                fib1 = fib2;
+                fib2 = nextNo;
+                System.out.print(nextNo + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+Explanation:
+
+We import the Scanner class from the java.util package to read input.
+We define the Main class as the main class for the program.
+In the main method:
+We create a Scanner object to read input from the user.
+We prompt the user to enter a number (n).
+We read and store the entered number.
+We initialize variables fib1 and fib2 with the first two numbers of the Fibonacci sequence (0 and 1).
+We handle the cases where n is 1 or 2 separately because the Fibonacci series starts with 0, 1.
+If n is 1, we print fib1.
+If n is 2, we print both fib1 and fib2.
+Otherwise, for n greater than 2, we print fib1 and fib2 first, then continue the Fibonacci sequence using a loop.
+Inside the loop, we calculate the next Fibonacci number (nextNo) by adding fib1 and fib2.
+We update fib1 with the value of fib2 and fib2 with the value of nextNo for the next iteration.
+We print each nextNo in the loop.
+The program prints the first n numbers of the Fibonacci series as per the user input.
+
+5)Positive or Negative number
+
+This is a java program to check whether the number entered by the user is positive or negative. The number is demonstrated as positive or negative by comparing the entered number with the Zero(0). If the number entered by the user is greater than zero, then the number is positive, else if the number is less than zero, then the number is negative and else the number is zero.
+
+import java.util.*;
+public class Main{
+public static void main(String []args){
+Scanner scan=new Scanner(System.in);
+System.out.println("Enter a number to check whether entered number is positive or negative");
+int n=scan.nextInt();
+if(n>0){
+System.out.prinlt("Entered number is positive");
+else if(n<0){
+System.out.println("Entered number is negative")
+}
+else{
+System.out.println("Number is equals to zero");
+}
+}
+}
+
+6)Even or Odd number
+
+This is a Java code to Check Whether a Number is Even or Odd. To do so the main idea is to divide the number by 2 and check if it’s divisible or not. It’s an Even number is it’s perfectly divisible by 2 or an Odd number otherwise.
+
+import java.util.*;
+public class Main{
+public static void main(String []args){
+Scanner scan=new Scanner(System.in);
+System.out.println("Enter a number");
+int n=scan.nextInt();
+if(n%2==0){
+System.out.println("Entered number is even");
+}
+else{
+System.out.printl("Entered number is odd");
+}
+}
+}
+
+7)Sum of First N Natural numbers: 
+
+Given an integer input of N, the objective is to find the sum of all the natural numbers until the given input integer. 
+
+import java.util.*;
+public class Main{
+public static void main(String []args){
+Scanner scan=new Scanner(System.in);
+System.out.println("Enter a number");
+int n=scan.nextInt();
+int sum=0;
+for(int i=0;i<n;i++){
+sum=sum+i;
+System.out.println(sum);
+}
+
+8)Sum of numbers in a given range:
+
+Given the range as integer input, the objective is to find the Sum of all the Numbers that lay in the given interval using different methods.
+
+import java.util.*;
+public class Main{
+public static void main(String []args){
+Scanner scan=new Scanner(System.in);
+System.out.println("Enter tow numbers");
+int m=scan.nextInt();
+int n=scan.nextInt();
+int sum=0;
+for(int i=m;i<=n;i++){
+sum=sum+i;
+System.out.println(sum);
+}
+}
+}
+
+9)Greatest of two numbers:
+
+Given two integer input Number1 and Number2, the objective is to write a Java code to compare both the Numbers and Find the Greatest of the Two Numbers.
+
+import java.util.*;
+public class Main{
+public static void main(String []args){
+Scanner scan=new Scanner(System.in);
+System.out.println("Enter two numbers");
+int num1=scan.nextInt();
+int num2=scan.nextInt();
+if(num1>num2){
+System.out.println("num1 is greater than num2");
+}
+else if(num1<num2){
+System.out.println("num2 is greater than num1");
+}
+else{
+System.out.println("Both are equal");
+}
+}
+
+10)Largest of Three numbers:
+
+Given Three integer inputs num1, num2 and num3, the objective is ti write a code to Find the Largest of the Three Numbers 
+
+import java.util.*;
+public class Main{
+public static void main(String []args){
+Scanner scan=new Scanner(System.in){
+System.out.println("Enter three numbers");
+int num1=scan.nextInt();
+int num2=scan.nextInt();
+int num3=scan.nextInt();
+if(num1>=num2 && num1>=num3){
+System.out.println(num1 + "is greater");
+}
+else if(num2>=num1 && num2>=num3){
+System.out.println(num2 + "is greater");
+}
+else{
+System.out.println(num3+ " i greater");
+}
+}
+
+11)Leap year or not
+import java.util.*;
+public class Main{
+public static void main(String []args){
+Scanner scan=new Scanner(System.in);
+System.out.println("Enter a year");
+int year=sca.nextInt();
+if(year%400==0){
+System.out.println("it is a leap year");
+else if(year%4==0 && year%100!=0)
+System.out.println("it is a leap year");
+}
+else{
+System.out.println("year is not leap year");
+}
+}
+}
+
+12)Reverse of a number
+
+import java.util.*;
+public class Main{
+public static void main(String []args){
+Scanner scan=new Scanner(System.in);
+System.out.println("Enter a number");
+int num=scan.nextInt();
+int reverse=0, rem;
+while(num!=0){
+rem=num%10;
+reverse=reverse*10+rem;
+num /= 10;
+}
+System.out.println("reverse number is " + reverse);
+
+import java.util.Scanner;: This line imports the Scanner class from the java.util package. The Scanner class is used to obtain input from the user.
+
+public class Main {: This line starts the declaration of the Main class.
+
+public static void main(String[] args) {: This line defines the main method, which serves as the entry point for the Java program. It takes an array of strings (args) as input.
+
+Scanner scanner = new Scanner(System.in);: This line creates a new Scanner object named scanner that reads input from the standard input stream (usually the keyboard).
+
+System.out.print("Enter a number: ");: This line displays the message "Enter a number: " to prompt the user to input a number.
+
+int num = scanner.nextInt();: This line reads an integer input from the user using the nextInt() method of the Scanner object scanner and stores it in the variable num.
+
+scanner.close();: This line closes the Scanner object scanner to release system resources after its use.
+
+int reverse = 0, rem;: This line declares two integer variables reverse and rem. reverse will store the reversed number, and rem will store the remainder when dividing the number by 10.
+
+while (num != 0) {: This line starts a while loop that continues until the variable num becomes 0.
+
+rem = num % 10;: This line calculates the remainder when num is divided by 10 and assigns it to the variable rem. This gives us the last digit of the number.
+
+reverse = reverse * 10 + rem;: This line updates the reverse variable by multiplying its current value by 10 (effectively shifting its digits one place to the left) and then adding the value of rem (the last digit of the original number).
+
+num /= 10;: This line divides num by 10, effectively removing the last digit from num in preparation for the next iteration of the loop.
+
+}: This line marks the end of the while loop.
+
+System.out.println("Reversed Number: " + reverse);: This line prints the reversed number stored in the reverse variable along with the message "Reversed Number: " to the console.
+
+}: This line marks the end of the main method.
+
+}: This line marks the end of the Main class.
+
+13)Check Whether or Not the Number is a Palindrome in Java Language
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter a number");
+        int num = scan.nextInt();
+        int reverse = 0, rem, temp;
+        temp = num;
+        while (temp != 0) {
+            rem = temp % 10;
+            reverse = reverse * 10 + rem;
+            temp /= 10;
+        }
+
+        if (num == reverse) {
+            System.out.println(num + " is palindrome");
+        } else {
+            System.out.println(num + " is not palindrome");
+        }
+    }
+}
+
+import java.util.*;: This line imports all classes in the java.util package which contains the Scanner class we'll use later in the program.
+
+public class Main {: This declares a public class named Main.
+
+public static void main(String[] args) {: This is the entry point of the program. main is a special method that JVM (Java Virtual Machine) looks for to start the execution of the program.
+
+Scanner scan = new Scanner(System.in);: This line creates a new Scanner object named scan which is used to get input from the user via the console (System.in).
+
+System.out.println("Enter a number");: This line prints the message "Enter a number" to prompt the user to input a number.
+
+int num = scan.nextInt();: This line reads an integer input from the user using the nextInt() method of the Scanner class and assigns it to the variable num.
+
+int reverse = 0, rem, temp;: This line declares three integer variables: reverse to store the reverse of the number, rem to store the remainder when dividing by 10, and temp to store a copy of the original number for later comparison.
+
+temp = num;: This line assigns the value of num to temp, creating a copy of the original number for later comparison.
+
+while (temp != 0) {: This line starts a while loop that continues as long as temp is not equal to 0.
+
+rem = temp % 10;: This line calculates the remainder (rem) when temp is divided by 10, which gives us the last digit of the number.
+
+reverse = reverse * 10 + rem;: This line appends the last digit (rem) to the reverse variable after shifting the existing digits to the left by one place.
+
+temp /= 10;: This line removes the last digit from temp by dividing it by 10.
+
+if (num == reverse) {: This line starts an if statement to check if the original number num is equal to its reverse reverse.
+
+System.out.println(num + " is palindrome");: If the number is a palindrome (i.e., the original number is equal to its reverse), this line prints a message indicating that.
+
+} else {: This line starts the else block for the if statement.
+
+System.out.println(num + " is not palindrome");: If the number is not a palindrome, this line prints a message indicating that.
+
+}: This closes the else block.
+
+}: This closes the while loop.
+
+}: This closes the main method.
+
+}: This closes the Main class.
+
+
+A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward. In simpler terms, it's something that remains unchanged when read from left to right and right to left. For example, "radar", "level", "12321", and "madam" are all palindromes.
+
+14)Armstrong number.
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a Scanner object to read input from the console
+        Scanner scan = new Scanner(System.in);
+
+        // Prompt the user to enter a number
+        System.out.println("Enter a number");
+
+        // Read an integer input from the user
+        int n = scan.nextInt();
+
+        // Store the original number in a temporary variable
+        int temp = n;
+
+        // Declare variables to store remainder and sum of cubes of digits
+        int rem, sum = 0;
+
+        // Loop through each digit of the number
+        while (n > 0) {
+            // Extract the last digit of the number
+            rem = n % 10;
+
+            // Remove the last digit from the number
+            n = n / 10;
+
+            // Calculate the cube of the digit and add it to the sum
+            sum = sum + rem * rem * rem;
+        }
+
+        // Check if the sum of cubes of digits is equal to the original number
+        if (temp == sum) {
+            // If equal, print that it is an Armstrong number
+            System.out.println("It is an Armstrong number");
+        } else {
+            // If not equal, print that it is not an Armstrong number
+            System.out.println("It is not an Armstrong number");
+        }
+    }
+}
+
+An Armstrong number (also known as a narcissistic number) is a number that is equal to the sum of its own digits raised to the power of the number of digits in the number itself. For example, 153 is an Armstrong number because 1^3 + 5^3 + 3^3 = 153.
+
+15)Armstrong number in a given range
+
+import java.util.*;
+public class Main{
+public static void main(String []args){
+Scanner scan=new Scanner(System.in);
+System.out.println("Enter number 1: ");
+int num1=scan.nextInt();
+System.out.println("Enter number 2: ");
+int num2=scan.nextInt();
+for(int i=num1;i<num2;i++){
+int temp,rem,sum=0;
+temp=i;
+while(temp!=0){
+rem=temp%10;
+sum=sum+(rem*rem*rem);
+temp=temp / 10;
+}
+if(sum==i){
+System.out.println(i + "is armstrong numbers");
+}
+}
+}
+
+import java.util.*;: This line imports all classes from the java.util package, which includes the Scanner class used for user input.
+
+public class Main{: This line declares a public class named Main.
+
+public static void main(String []args){: This line declares the main method, the entry point of the program, which takes an array of strings (args) as input.
+
+Scanner scan=new Scanner(System.in);: This line creates a new Scanner object named scan for reading user input from the standard input stream (usually the keyboard).
+
+System.out.println("Enter number 1: ");: This line prints a prompt asking the user to enter the first number.
+
+int num1=scan.nextInt();: This line reads an integer input from the user and stores it in the variable num1.
+
+System.out.println("Enter number 2: ");: This line prints a prompt asking the user to enter the second number.
+
+int num2=scan.nextInt();: This line reads an integer input from the user and stores it in the variable num2.
+
+for(int i=num1;i<num2;i++){: This line starts a for loop that iterates over all the integers between num1 (inclusive) and num2 (exclusive), assigning each value to the variable i.
+
+int temp,rem,sum=0;: This line declares three integer variables temp, rem, and sum, initializing sum to 0. These variables are used for temporary storage and calculation within the loop.
+
+temp=i;: This line assigns the value of i to the variable temp, which will be used for extracting digits.
+
+while(temp!=0){: This line starts a while loop that continues until temp becomes 0.
+
+rem=temp%10;: This line calculates the remainder (rem) when temp is divided by 10, which gives the last digit of temp.
+
+sum=sum+(rem*rem*rem);: This line adds the cube of the last digit (rem) to the sum.
+
+temp=temp / 10;: This line updates temp by removing its last digit, effectively shifting to the next digit.
+
+if(sum==i){: This line checks if the sum of cubes of digits is equal to the original number (i).
+
+System.out.println(i + "is armstrong numbers");: If i is an Armstrong number, this line prints i followed by a message indicating it is an Armstrong number.
+
+}: This line marks the end of the if statement.
+
+}: This line marks the end of the for loop.
+
+}: This line marks the end of the main method.
+
+}: This line marks the end of the class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
